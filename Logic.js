@@ -56,10 +56,10 @@ function gameEngine() {
         score += 1; // Tambah skor
 
         // Update skor tertinggi jika skor saat ini lebih tinggi
-        if (score > hiscoreval) {
-            hiscoreval = score;
-            localStorage.setItem("hiscore", JSON.stringify(hiscoreval)); // Simpan skor tertinggi ke localStorage
-            hiscoreBox.innerHTML = "HiScore: " + hiscoreval; // Tampilkan skor tertinggi
+        if (score > highscoreval) {
+            highscoreval = score;
+            localStorage.setItem("highscore", JSON.stringify(highscoreval)); // Simpan skor tertinggi ke localStorage
+            highscoreBox.innerHTML = "HighScore: " + highscoreval; // Tampilkan skor tertinggi
         }
 
         scoreBox.innerHTML = "Current score : " + score; // Update skor saat ini
