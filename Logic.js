@@ -113,14 +113,14 @@ function gameEngine() {
 musicSound.play(); // Mulai musik latar
 
 // AMBIL SKOR TERTINGGI DARI LOCAL STORAGE
-let hiscore = localStorage.getItem('hiscore');
+let highscore = localStorage.getItem('highscore');
 
-if (hiscore == null) {
-    hiscoreval = 0; // Jika belum ada, inisialisasi ke 0
-    localStorage.setItem('hiscore', JSON.stringify(hiscoreval)); // Simpan ke localStorage
+if (highscore == null) {
+    highscoreval = 0; // Jika belum ada, inisialisasi ke 0
+    localStorage.setItem('highscore', JSON.stringify(highscoreval)); // Simpan ke localStorage
 } else {
-    hiscoreval = JSON.parse(hiscore); // Ambil dan parse data
-    hiscoreBox.innerHTML = "HiScore: " + hiscore; // Tampilkan skor tertinggi
+    highscoreval = JSON.parse(highscore); // Ambil dan parse data
+    highcoreBox.innerHTML = "HighScore: " + highscore; // Tampilkan skor tertinggi
 }
 
 window.requestAnimationFrame(main); // Mulai loop game
