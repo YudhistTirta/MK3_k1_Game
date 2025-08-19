@@ -37,3 +37,44 @@ function isCollide(snake) {
 
     return false; // Tidak ada tabrakan
 }
+function gameEngine() {
+
+    // PERIKSA TABRAKAN
+    if (isCollide(snakeArr)) {
+        gameOverSound.play(); // Mainkan suara game over
+        moveSound.pause(); // Hentikan suara gerakan
+        inputDir = { x: 0, y: 0 }; // Hentikan pergerakan ular
+        alert("Game over , press any key to play again"); // Tampilkan pesan game over
+        snakeArr = [{ x: 13, y: 15 }]; // Reset posisi ular
+        musicSound.play(); // Mainkan musik latar
+        score = 0; // Reset skor
+    }
+
+    // JIKA MAKANAN DIMAKAN
+    if (snakeArr[0].y == food.y && snakeArr[0].x == food.x) {
+        foodSound.play(); // Mainkan suara makan
+        score += 1; // Tambah skor
+
+        // Update skor tertinggi jika skor saat ini lebih tinggi
+        if (score > hiscoreval) {
+            hiscoreval = score;
+            localStorage.setItem("hiscore", JSON.stringify(hiscoreval)); // Simpan skor tertinggi ke localStorage
+            hiscoreBox.innerHTML = "HiScore: " + hiscoreval; // Tampilkan skor tertinggi
+        }
+
+        scoreBox.innerHTML = "Current score : " + score; // Update skor saat ini
+        // Tambahkan segmen baru di kepala ular
+        snakeArr.unshift({ x: snakeArr[0].x + inputDir.x, y: snakeArr[0].y + inputDir.y });
+
+        // Regenerasi makanan di posisi acak
+        let a = 2;
+        let b = 16;
+        food = {
+            x: Math.round(a + (b - a) * Math.random()),
+            y: Math.round(a + (b - a) * Math.random())
+        };
+    }
+
+    // GERAKKAN BADAN ULAR
+    for (let i = snakeArr.length - 2; i >= 0; i--) {
+        snakeArr[i + 1] = { ...snakeArr[i] }; // Pindahkan setiap bagian tubuh ke posisi sebelumnya
