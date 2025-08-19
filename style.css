@@ -20,10 +20,10 @@
 }
 
 #board{
-    background:linear-gradient(rgb(145, 204, 145) , yellow);
+    background:linear-gradient(rgb(135, 179, 135) , rgb(232, 232, 91));
     width: 90vmin;
     height: 92vmin;
-    border: 2px solid black;
+    border: 2px solid rgb(239, 232, 232);
     display: grid;
     grid-template-rows: repeat(18,1fr);
     grid-template-columns: repeat(18,1fr);
@@ -46,7 +46,7 @@
 }
 
 .food{
-    background:linear-gradient(red , purple);
+    background:linear-gradient(rgb(123, 255, 0) , rgb(9, 152, 40));
     border: .25vmin solid black;
 }
 
@@ -80,9 +80,9 @@
     /* margin: 25px; */
     margin: 14px;
     font-size:42px;
-    background-color: rgba(36, 196, 196, 0.884);
+    background:linear-gradient(rgb(63, 243, 252) , rgb(179, 248, 183));
     border-radius: 22px;
-    box-shadow: inset 3px 5px green;
+    box-shadow: inset 3px 5px rgb(22, 98, 5);
     
 }
 #hiscoreBox{
@@ -90,7 +90,7 @@
     padding: 18px;
     margin: 14px;
     font-size:42px;
-    background-color: rgba(46, 172, 94, 0.884);;
+    background:linear-gradient(rgb(89, 245, 69) , rgb(186, 255, 187));
     border-radius: 22px;
     box-shadow: inset 3px 5px green;
 }
@@ -100,7 +100,11 @@
     margin: 14px;
     /* margin: 25px; */
     font-size:42px;
-    background-color: rgba(214, 230, 77, 0.884);;
+    background:linear-gradient(rgb(209, 250, 7) , rgb(246, 255, 187));
     border-radius: 22px;
     box-shadow: inset 3px 5px green;
+}
+
+body{
+    background:linear-gradient(rgb(3, 3, 3) , rgb(12, 3, 12));
 }
