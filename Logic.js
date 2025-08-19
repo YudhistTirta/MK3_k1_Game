@@ -78,3 +78,47 @@ function gameEngine() {
     // GERAKKAN BADAN ULAR
     for (let i = snakeArr.length - 2; i >= 0; i--) {
         snakeArr[i + 1] = { ...snakeArr[i] }; // Pindahkan setiap bagian tubuh ke posisi sebelumnya
+    }
+
+    // GERAKKAN KEPALA ULAR
+    snakeArr[0].x += inputDir.x;
+    snakeArr[0].y += inputDir.y;
+
+    // TAMPILKAN ULAR DI BOARD
+    board.innerHTML = ""; // Kosongkan board
+    snakeArr.forEach((e, index) => {
+        snakeElement = document.createElement('div'); // Buat elemen div baru
+        snakeElement.style.gridRowStart = e.y; // Atur posisi vertikal
+        snakeElement.style.gridColumnStart = e.x; // Atur posisi horizontal
+
+        if (index === 0) {
+            snakeElement.classList.add('head'); // Tambahkan class untuk kepala ular
+        } else {
+            snakeElement.classList.add('snake'); // Tambahkan class untuk tubuh ular
+        }
+
+        board.appendChild(snakeElement); // Tambahkan elemen ke board
+    });
+
+    // TAMPILKAN MAKANAN DI BOARD
+    foodElement = document.createElement('div'); // Buat elemen makanan
+    foodElement.style.gridRowStart = food.y;
+    foodElement.style.gridColumnStart = food.x;
+    foodElement.classList.add('food'); // Tambahkan class makanan
+    board.appendChild(foodElement); // Tambahkan ke board
+}
+
+// MAIN LOGIC
+
+musicSound.play(); // Mulai musik latar
+
+// AMBIL SKOR TERTINGGI DARI LOCAL STORAGE
+let hiscore = localStorage.getItem('hiscore');
+
+if (hiscore == null) {
+    hiscoreval = 0; // Jika belum ada, inisialisasi ke 0
+    localStorage.setItem('hiscore', JSON.stringify(hiscoreval)); // Simpan ke localStorage
+} else {
+    hiscoreval = JSON.parse(hiscore); // Ambil dan parse data
+    hiscoreBox.innerHTML = "HiScore: " + hiscore; // Tampilkan skor tertinggi
+}
