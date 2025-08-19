@@ -85,7 +85,7 @@
     box-shadow: inset 3px 5px rgb(22, 98, 5);
     
 }
-#highscoreBox{
+#hiscoreBox{
     font-family: 'Bebas Neue', cursive;
     padding: 18px;
     margin: 14px;
@@ -108,3 +108,4 @@
 body{
     background:linear-gradient(rgb(3, 3, 3) , rgb(12, 3, 12));
 }
+

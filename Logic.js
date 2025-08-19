@@ -4,7 +4,7 @@ const foodSound = new Audio("./items/eat.mp3"); // Suara saat makan makanan
 const gameOverSound = new Audio("./items/gameOver.mp3"); // Suara saat game over
 const moveSound = new Audio('./items/move.mp3'); // Suara saat bergerak
 const musicSound = new Audio("./items/gameBg.mp3"); // Musik latar
-let speed = 6; // Kecepatan permainan
+let speed = 9; // Kecepatan permainan
 let score = 0; // Skor saat ini
 let lastPaintTime = 0; // Waktu terakhir frame dirender
 let snakeArr = [ // Posisi awal ular
@@ -37,6 +37,7 @@ function isCollide(snake) {
 
     return false; // Tidak ada tabrakan
 }
+
 function gameEngine() {
 
     // PERIKSA TABRAKAN
@@ -56,10 +57,10 @@ function gameEngine() {
         score += 1; // Tambah skor
 
         // Update skor tertinggi jika skor saat ini lebih tinggi
-        if (score > highscoreval) {
-            highscoreval = score;
-            localStorage.setItem("highscore", JSON.stringify(highscoreval)); // Simpan skor tertinggi ke localStorage
-            highscoreBox.innerHTML = "HighScore: " + highscoreval; // Tampilkan skor tertinggi
+        if (score > hiscoreval) {
+            hiscoreval = score;
+            localStorage.setItem("hiscore", JSON.stringify(hiscoreval)); // Simpan skor tertinggi ke localStorage
+            hiscoreBox.innerHTML = "HiScore: " + hiscoreval; // Tampilkan skor tertinggi
         }
 
         scoreBox.innerHTML = "Current score : " + score; // Update skor saat ini
@@ -113,14 +114,14 @@ function gameEngine() {
 musicSound.play(); // Mulai musik latar
 
 // AMBIL SKOR TERTINGGI DARI LOCAL STORAGE
-let highscore = localStorage.getItem('highscore');
+let hiscore = localStorage.getItem('hiscore');
 
-if (highscore == null) {
-    highscoreval = 0; // Jika belum ada, inisialisasi ke 0
-    localStorage.setItem('highscore', JSON.stringify(highscoreval)); // Simpan ke localStorage
+if (hiscore == null) {
+    hiscoreval = 0; // Jika belum ada, inisialisasi ke 0
+    localStorage.setItem('hiscore', JSON.stringify(hiscoreval)); // Simpan ke localStorage
 } else {
-    highscoreval = JSON.parse(highscore); // Ambil dan parse data
-    highcoreBox.innerHTML = "HighScore: " + highscore; // Tampilkan skor tertinggi
+    hiscoreval = JSON.parse(hiscore); // Ambil dan parse data
+    hiscoreBox.innerHTML = "HiScore: " + hiscore; // Tampilkan skor tertinggi
 }
 
 window.requestAnimationFrame(main); // Mulai loop game
