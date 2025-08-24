@@ -20,14 +20,16 @@
 }
 
 #board{
-    background:linear-gradient(rgb(135, 179, 135) , rgb(232, 232, 91));
+    background: rgb(0, 9, 87, 0.7);
     width: 90vmin;
     height: 92vmin;
-    border: 2px solid rgb(239, 232, 232);
+    border: 2px solid #0065F8;
+    box-shadow: 0 0 10px #0065F8, 
+                0 0 20px #0065F8;
+    border-radius: 12px;
     display: grid;
     grid-template-rows: repeat(18,1fr);
     grid-template-columns: repeat(18,1fr);
-
 }
 
 .head{
@@ -51,7 +53,13 @@
 }
 
 .maker{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     display: flex;
+    background: rgb(0, 9, 87, 0.5);
+    border: 2px solid #0065F8;
+    border-radius: 12px;
+    box-shadow: 0 0 10px #0065F8, 
+                0 0 20px #0065F8;
     flex-direction: column;
     text-align: center;
     /* border: 2px solid red; */
@@ -62,37 +70,41 @@
 }
 
 .maker h1{
-    font-family: 'Bebas Neue', cursive;
-    font-family: 'Yellowtail', cursive;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
     padding: 18px;
     /* margin: 25px; */
     margin: 14px;
-    font-size:42px;
-    background-color: rgba(72, 157, 236, 0.884);;
-    border-radius: 22px;
-    box-shadow: inset 3px 5px green;
-    text-shadow: -3px -2px 2px rgb(185, 72, 72);
+    font-size:35px;
+    color: #ffff;
 }
 
 #scoreBox{
-    font-family: 'Bebas Neue', cursive;
     padding: 18px;
     /* margin: 25px; */
     margin: 14px;
     font-size:42px;
-    background:linear-gradient(rgb(63, 243, 252) , rgb(179, 248, 183));
-    border-radius: 22px;
-    box-shadow: inset 3px 5px rgb(22, 98, 5);
+    font-weight: bold;
+    color: #ffff;
+    text-shadow: 0 0 5px #ffff;
+    background: rgb(0, 9, 87, 0.9);
+    border: 2px solid #0065F8;
+    box-shadow: 0 0 10px #0065F8, 
+                0 0 20px #0065F8;
+    border-radius: 12px;
     
 }
 #hiscoreBox{
-    font-family: 'Bebas Neue', cursive;
     padding: 18px;
     margin: 14px;
     font-size:42px;
-    background:linear-gradient(rgb(89, 245, 69) , rgb(186, 255, 187));
-    border-radius: 22px;
-    box-shadow: inset 3px 5px green;
+    font-weight: bold;
+    color: #ffff;
+    text-shadow: 0 0 5px #ffff;
+    background: rgb(0, 9, 87, 0.9);
+    border: 2px solid #0065F8;
+    box-shadow: 0 0 10px #0065F8, 
+                0 0 20px #0065F8;
+    border-radius: 12px;
 }
 
 #extra{
@@ -100,9 +112,8 @@
     margin: 14px;
     /* margin: 25px; */
     font-size:42px;
-    background:linear-gradient(rgb(209, 250, 7) , rgb(246, 255, 187));
-    border-radius: 22px;
-    box-shadow: inset 3px 5px green;
+    color: #ffff;
+    text-shadow: 0 0 5px #ffff;
 }
 
 body{

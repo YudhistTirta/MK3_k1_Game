@@ -60,10 +60,10 @@ function gameEngine() {
         if (score > hiscoreval) {
             hiscoreval = score;
             localStorage.setItem("hiscore", JSON.stringify(hiscoreval)); // Simpan skor tertinggi ke localStorage
-            hiscoreBox.innerHTML = "HiScore: " + hiscoreval; // Tampilkan skor tertinggi
+            hiscoreBox.innerHTML = "High-Score <br>" + hiscoreval; // Tampilkan skor tertinggi
         }
 
-        scoreBox.innerHTML = "Current score : " + score; // Update skor saat ini
+        scoreBox.innerHTML = "score <br> " + score; // Update skor saat ini
         // Tambahkan segmen baru di kepala ular
         snakeArr.unshift({ x: snakeArr[0].x + inputDir.x, y: snakeArr[0].y + inputDir.y });
 
@@ -121,7 +121,7 @@ if (hiscore == null) {
     localStorage.setItem('hiscore', JSON.stringify(hiscoreval)); // Simpan ke localStorage
 } else {
     hiscoreval = JSON.parse(hiscore); // Ambil dan parse data
-    hiscoreBox.innerHTML = "HiScore: " + hiscore; // Tampilkan skor tertinggi
+    hiscoreBox.innerHTML = "High-Score <br>" + hiscore; // Tampilkan skor tertinggi
 }
 
 window.requestAnimationFrame(main); // Mulai loop game
