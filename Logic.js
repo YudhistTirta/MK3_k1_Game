@@ -63,7 +63,7 @@ function gameEngine() {
             hiscoreBox.innerHTML = "High-Score <br>" + hiscoreval; // Tampilkan skor tertinggi
         }
 
-        scoreBox.innerHTML = "score <br> " + score; // Update skor saat ini
+        scoreBox.innerHTML = "Score <br> " + score; // Update skor saat ini
         // Tambahkan segmen baru di kepala ular
         snakeArr.unshift({ x: snakeArr[0].x + inputDir.x, y: snakeArr[0].y + inputDir.y });
 
