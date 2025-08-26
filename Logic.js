@@ -13,6 +13,10 @@ let hiscoreval = 0;
 let playerName = "Guest";
 let gameStarted = false;
 
+// daftar emoji makanan
+const fruits = ["🍎", "🍋", "🍊", "🍉", "🍇", "🍌", "🍓", "😈"];
+let currentFruit = fruits[Math.floor(Math.random() * fruits.length)];
+
 // DOM Elements
 const scoreBox = document.getElementById('scoreBox');
 const hiscoreBox = document.getElementById('hiscoreBox');
@@ -26,10 +30,11 @@ const speedSelect = document.getElementById('speedSelect');
 const musicToggle = document.getElementById('musicToggle');
 const saveSettings = document.getElementById('saveSettings');
 const closeSettings = document.getElementById('closeSettings');
+const board = document.getElementById('board');
 
 // GAME FUNCTIONS
 function main(ctime) {
-    if (!gameStarted) return; // Don't run game loop until name is submitted
+    if (!gameStarted) return; 
     window.requestAnimationFrame(main);
     if ((ctime - lastPaintTime) / 1000 < (1 / speed)) return;
     lastPaintTime = ctime;
@@ -57,6 +62,7 @@ function generateFood() {
 }
 
 function gameEngine() {
+    // cek tabrakan
     if (isCollide(snakeArr)) {
         gameOverSound.play();
         moveSound.pause();
@@ -69,6 +75,7 @@ function gameEngine() {
         if (musicToggle.checked) musicSound.play();
     }
 
+    // jika makan
     if (snakeArr[0].y === food.y && snakeArr[0].x === food.x) {
         foodSound.play();
         score += 1;
@@ -79,15 +86,21 @@ function gameEngine() {
         }
         scoreBox.innerHTML = "Score <br> " + score;
         snakeArr.unshift({ x: snakeArr[0].x + inputDir.x, y: snakeArr[0].y + inputDir.y });
+
+        // regenerate food & emoji
         food = generateFood();
+        currentFruit = fruits[Math.floor(Math.random() * fruits.length)];
     }
 
+    // gerakkan badan ular
     for (let i = snakeArr.length - 2; i >= 0; i--) {
         snakeArr[i + 1] = { ...snakeArr[i] };
     }
+    // gerakkan kepala
     snakeArr[0].x += inputDir.x;
     snakeArr[0].y += inputDir.y;
 
+    // render ulang papan
     board.innerHTML = "";
     snakeArr.forEach((e, index) => {
         let snakeElement = document.createElement('div');
@@ -97,10 +110,12 @@ function gameEngine() {
         board.appendChild(snakeElement);
     });
 
+    // render makanan
     let foodElement = document.createElement('div');
     foodElement.style.gridRowStart = food.y;
     foodElement.style.gridColumnStart = food.x;
     foodElement.classList.add('food');
+    foodElement.innerText = currentFruit; // tampilkan emoji
     board.appendChild(foodElement);
 }
 
@@ -140,7 +155,7 @@ submitName.addEventListener('click', () => {
 // Handle settings button
 settingsBtn.addEventListener('click', () => {
     settingsModal.style.display = 'flex';
-    gameStarted = false; // Pause game while settings open
+    gameStarted = false; 
 });
 
 // Handle save settings
@@ -164,29 +179,21 @@ closeSettings.addEventListener('click', () => {
 
 // DETEKSI INPUT TOMBOL ARAH
 window.addEventListener('keydown', e => {
-    if (!gameStarted) return; // Ignore inputs if game hasn't started
+    if (!gameStarted) return;
     inputDir = { x: 0, y: 1 };
     moveSound.play();
     switch (e.key) {
         case "ArrowUp":
-            console.log("ArrowUp");
-            inputDir.x = 0;
-            inputDir.y = -1;
+            inputDir = { x: 0, y: -1 };
             break;
         case "ArrowDown":
-            console.log("ArrowDown");
-            inputDir.x = 0;
-            inputDir.y = 1;
+            inputDir = { x: 0, y: 1 };
             break;
         case "ArrowLeft":
-            console.log("ArrowLeft");
-            inputDir.x = -1;
-            inputDir.y = 0;
+            inputDir = { x: -1, y: 0 };
             break;
         case "ArrowRight":
-            console.log("ArrowRight");
-            inputDir.x = 1;
-            inputDir.y = 0;
+            inputDir = { x: 1, y: 0 };
             break;
     }
 });
