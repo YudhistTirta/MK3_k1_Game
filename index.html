@@ -4,38 +4,54 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Snake game</title>
+    <title>Snake Game</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
-
-        
-        <div id="board" id="item">
-        </div>
-        
-        <div class="maker" id="item">
-
+        <div id="board" class="item"></div>
+        <div class="maker item">
             <div id="extra">
                 <h3>Play with arrow keys</h3>
             </div>
-
-            <div id="scoreBox">
-                score:0
-            </div>
-            
-            <div id="hiscoreBox">
-                Hi-score:0
-            </div>
-            
-            <h1>
-                Made by Vipul Chaudhary
-            </h1>
-            
+            <div id="playerName">Player: Guest</div>
+            <div id="scoreBox">Score<br>0</div>
+            <div id="hiscoreBox">High-Score<br>0</div>
+            <button id="settingsBtn">Settings</button>
         </div>
-        
+        <div class="leaderboard item">
+            <h2>Top Scores</h2>
+            <div id="leaderboardList"></div>
+            <button id="clearLeaderboardBtn">Clear Scores</button>
+        </div>
     </div>
-    
+
+    <!-- Name Input Modal -->
+    <div id="nameModal" class="modal">
+        <div class="modal-content">
+            <h2>Enter Your Name</h2>
+            <input type="text" id="nameInput" placeholder="Your Name" maxlength="20">
+            <button id="submitName">Start Game</button>
+        </div>
+    </div>
+
+    <!-- Settings Modal -->
+    <div id="settingsModal" class="modal">
+        <div class="modal-content">
+            <h2>Settings</h2>
+            <label for="speedSelect">Game Speed:</label>
+            <select id="speedSelect">
+                <option value="4">Slow</option>
+                <option value="6" selected>Medium</option>
+                <option value="8">Fast</option>
+            </select>
+            <label for="musicToggle">Background Music:</label>
+            <input type="checkbox" id="musicToggle" checked>
+            <button id="saveSettings">Save</button>
+            <button id="closeSettings">Close</button>
+        </div>
+    </div>
+
+    <script src="Logic.js"></script>
 </body>
-<script src="Logic.js"></script>
 </html>
