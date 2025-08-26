@@ -12,7 +12,14 @@ let food = { x: 6, y: 7 };
 let hiscoreval = 0;
 let playerName = "Guest";
 let gameStarted = false;
+<<<<<<< HEAD
 let leaderboard = [];
+=======
+
+// daftar emoji makanan
+const fruits = ["🍎", "🍋", "🍊", "🍉", "🍇", "🍌", "🍓", "😈"];
+let currentFruit = fruits[Math.floor(Math.random() * fruits.length)];
+>>>>>>> a2135497b07846ff49c96260f53aaef75623f9b1
 
 // DOM Elements
 const scoreBox = document.getElementById('scoreBox');
@@ -27,12 +34,20 @@ const speedSelect = document.getElementById('speedSelect');
 const musicToggle = document.getElementById('musicToggle');
 const saveSettings = document.getElementById('saveSettings');
 const closeSettings = document.getElementById('closeSettings');
+<<<<<<< HEAD
 const leaderboardList = document.getElementById('leaderboardList');
 const clearLeaderboardBtn = document.getElementById('clearLeaderboardBtn');
 
 // GAME FUNCTIONS
 function main(ctime) {
     if (!gameStarted) return;
+=======
+const board = document.getElementById('board');
+
+// GAME FUNCTIONS
+function main(ctime) {
+    if (!gameStarted) return; 
+>>>>>>> a2135497b07846ff49c96260f53aaef75623f9b1
     window.requestAnimationFrame(main);
     if ((ctime - lastPaintTime) / 1000 < (1 / speed)) return;
     lastPaintTime = ctime;
@@ -59,6 +74,7 @@ function generateFood() {
     return newFood;
 }
 
+<<<<<<< HEAD
 function updateLeaderboard() {
     if (score > 0) {
         leaderboard.push({ name: playerName, score: score });
@@ -79,15 +95,23 @@ function displayLeaderboard() {
 }
 
 function gameEngine() {
+=======
+function gameEngine() {
+    // cek tabrakan
+>>>>>>> a2135497b07846ff49c96260f53aaef75623f9b1
     if (isCollide(snakeArr)) {
         gameOverSound.play();
         moveSound.pause();
         musicSound.pause();
+<<<<<<< HEAD
         updateLeaderboard();
+=======
+>>>>>>> a2135497b07846ff49c96260f53aaef75623f9b1
         inputDir = { x: 0, y: 0 };
         alert("Game over, press any key to play again");
         snakeArr = [{ x: 13, y: 15 }];
         score = 0;
+<<<<<<< HEAD
         scoreBox.innerHTML = "Score<br>" + score;
         if (musicToggle.checked) musicSound.play();
     }
@@ -111,6 +135,38 @@ function gameEngine() {
     snakeArr[0].x += inputDir.x;
     snakeArr[0].y += inputDir.y;
 
+=======
+        scoreBox.innerHTML = "Score <br> " + score;
+        if (musicToggle.checked) musicSound.play();
+    }
+
+    // jika makan
+    if (snakeArr[0].y === food.y && snakeArr[0].x === food.x) {
+        foodSound.play();
+        score += 1;
+        if (score > hiscoreval) {
+            hiscoreval = score;
+            localStorage.setItem("hiscore", JSON.stringify(hiscoreval));
+            hiscoreBox.innerHTML = "High-Score <br>" + hiscoreval;
+        }
+        scoreBox.innerHTML = "Score <br> " + score;
+        snakeArr.unshift({ x: snakeArr[0].x + inputDir.x, y: snakeArr[0].y + inputDir.y });
+
+        // regenerate food & emoji
+        food = generateFood();
+        currentFruit = fruits[Math.floor(Math.random() * fruits.length)];
+    }
+
+    // gerakkan badan ular
+    for (let i = snakeArr.length - 2; i >= 0; i--) {
+        snakeArr[i + 1] = { ...snakeArr[i] };
+    }
+    // gerakkan kepala
+    snakeArr[0].x += inputDir.x;
+    snakeArr[0].y += inputDir.y;
+
+    // render ulang papan
+>>>>>>> a2135497b07846ff49c96260f53aaef75623f9b1
     board.innerHTML = "";
     snakeArr.forEach((e, index) => {
         let snakeElement = document.createElement('div');
@@ -120,10 +176,18 @@ function gameEngine() {
         board.appendChild(snakeElement);
     });
 
+<<<<<<< HEAD
+=======
+    // render makanan
+>>>>>>> a2135497b07846ff49c96260f53aaef75623f9b1
     let foodElement = document.createElement('div');
     foodElement.style.gridRowStart = food.y;
     foodElement.style.gridColumnStart = food.x;
     foodElement.classList.add('food');
+<<<<<<< HEAD
+=======
+    foodElement.innerText = currentFruit; // tampilkan emoji
+>>>>>>> a2135497b07846ff49c96260f53aaef75623f9b1
     board.appendChild(foodElement);
 }
 
@@ -132,6 +196,7 @@ function gameEngine() {
 let hiscore = localStorage.getItem('hiscore');
 if (hiscore !== null) {
     hiscoreval = JSON.parse(hiscore);
+<<<<<<< HEAD
     hiscoreBox.innerHTML = "High-Score<br>" + hiscoreval;
 }
 
@@ -140,6 +205,9 @@ let savedLeaderboard = localStorage.getItem('leaderboard');
 if (savedLeaderboard !== null) {
     leaderboard = JSON.parse(savedLeaderboard);
     displayLeaderboard();
+=======
+    hiscoreBox.innerHTML = "High-Score <br>" + hiscoreval;
+>>>>>>> a2135497b07846ff49c96260f53aaef75623f9b1
 }
 
 // Load settings
@@ -170,7 +238,11 @@ submitName.addEventListener('click', () => {
 // Handle settings button
 settingsBtn.addEventListener('click', () => {
     settingsModal.style.display = 'flex';
+<<<<<<< HEAD
     gameStarted = false;
+=======
+    gameStarted = false; 
+>>>>>>> a2135497b07846ff49c96260f53aaef75623f9b1
 });
 
 // Handle save settings
@@ -192,6 +264,7 @@ closeSettings.addEventListener('click', () => {
     window.requestAnimationFrame(main);
 });
 
+<<<<<<< HEAD
 // Handle clear leaderboard
 clearLeaderboardBtn.addEventListener('click', () => {
     leaderboard = [];
@@ -202,6 +275,8 @@ clearLeaderboardBtn.addEventListener('click', () => {
     displayLeaderboard();
 });
 
+=======
+>>>>>>> a2135497b07846ff49c96260f53aaef75623f9b1
 // DETEKSI INPUT TOMBOL ARAH
 window.addEventListener('keydown', e => {
     if (!gameStarted) return;
@@ -209,6 +284,7 @@ window.addEventListener('keydown', e => {
     moveSound.play();
     switch (e.key) {
         case "ArrowUp":
+<<<<<<< HEAD
             console.log("ArrowUp");
             inputDir.x = 0;
             inputDir.y = -1;
@@ -230,3 +306,18 @@ window.addEventListener('keydown', e => {
             break;
     }
 });
+=======
+            inputDir = { x: 0, y: -1 };
+            break;
+        case "ArrowDown":
+            inputDir = { x: 0, y: 1 };
+            break;
+        case "ArrowLeft":
+            inputDir = { x: -1, y: 0 };
+            break;
+        case "ArrowRight":
+            inputDir = { x: 1, y: 0 };
+            break;
+    }
+});
+>>>>>>> a2135497b07846ff49c96260f53aaef75623f9b1
