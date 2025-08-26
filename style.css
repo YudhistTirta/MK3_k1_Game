@@ -220,3 +220,140 @@ body {
 #clearLeaderboardBtn:hover {
     background: rgb(0, 9, 87, 1);
 }
+
+/* Styling untuk kepala ular dengan mata */
+.head {
+    background: linear-gradient(145deg, #4CAF50, #2E7D32);
+    border-radius: 45%;
+    border: 2px solid #1B5E20;
+    position: relative;
+    box-shadow: inset 2px 2px 4px rgba(255,255,255,0.3);
+}
+
+/* Mata untuk kepala ular */
+.eye {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background: #fff;
+    border: 1px solid #000;
+    border-radius: 50%;
+}
+
+.eye::after {
+    content: '';
+    position: absolute;
+    width: 3px;
+    height: 3px;
+    background: #000;
+    border-radius: 50%;
+    top: 1px;
+    left: 1px;
+}
+
+/* Posisi mata berdasarkan arah kepala */
+.head-up .eye-left {
+    top: 3px;
+    left: 5px;
+}
+
+.head-up .eye-right {
+    top: 3px;
+    right: 5px;
+}
+
+.head-down .eye-left {
+    bottom: 3px;
+    left: 5px;
+}
+
+.head-down .eye-right {
+    bottom: 3px;
+    right: 5px;
+}
+
+.head-left .eye-left {
+    top: 3px;
+    left: 3px;
+}
+
+.head-left .eye-right {
+    bottom: 3px;
+    left: 3px;
+}
+
+.head-right .eye-left {
+    top: 3px;
+    right: 3px;
+}
+
+.head-right .eye-right {
+    bottom: 3px;
+    right: 3px;
+}
+
+/* Styling untuk tubuh ular (tidak berubah) */
+.snake {
+    background: linear-gradient(145deg, #8BC34A, #689F38);
+    border-radius: 20%;
+    border: 1px solid #558B2F;
+}
+
+/* Styling untuk ekor ular - bentuk runcing */
+.tail {
+    background: linear-gradient(145deg, #8BC34A, #689F38);
+    border: 1px solid #558B2F;
+    border-radius: 50% 20% 50% 20%;
+    position: relative;
+    transform: rotate(45deg);
+}
+
+/* Tambahan efek untuk ekor */
+.tail::after {
+    content: '';
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background: linear-gradient(145deg, #689F38, #558B2F);
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* Efek hover dan animasi */
+.head:hover {
+    transform: scale(1.1);
+    transition: transform 0.2s ease;
+}
+
+.tail {
+    animation: tailWiggle 1s ease-in-out infinite alternate;
+}
+
+@keyframes tailWiggle {
+    0% { 
+        transform: rotate(40deg) scale(0.9); 
+    }
+    100% { 
+        transform: rotate(50deg) scale(1.0); 
+    }
+}
+
+/* Styling tambahan untuk makanan agar lebih menarik */
+.food {
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: foodPulse 1.5s ease-in-out infinite;
+}
+
+@keyframes foodPulse {
+    0%, 100% { 
+        transform: scale(1); 
+    }
+    50% { 
+        transform: scale(1.1); 
+    }
+}
