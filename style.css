@@ -64,18 +64,10 @@
     height: 92vmin;
 }
 
-.maker h1 {
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    padding: 18px;
-    margin: 14px;
-    font-size: 35px;
-    color: #fff;
-}
-
 #scoreBox, #hiscoreBox, #playerName {
     padding: 18px;
-    margin: 14px;
-    font-size: 42px;
+    margin: 10px;
+    font-size: 35px;
     font-weight: bold;
     color: #fff;
     text-shadow: 0 0 5px #fff;
@@ -87,8 +79,8 @@
 
 #extra {
     padding: 18px;
-    margin: 14px;
-    font-size: 42px;
+    margin: 10px;
+    font-size: 35px;
     color: #fff;
     text-shadow: 0 0 5px #fff;
 }
@@ -183,7 +175,7 @@ body {
     text-align: center;
 }
 
-.leaderboard h2 {
+.leaderboard h2, h1 {
     padding: 18px;
     margin: 14px;
     font-size: 35px;
