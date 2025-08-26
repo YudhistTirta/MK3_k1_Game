@@ -83,6 +83,15 @@ function displayLeaderboard() {
     });
 }
 
+// Fungsi untuk mendapatkan arah kepala ular
+function getHeadDirection() {
+    if (inputDir.x === 1) return 'right';
+    if (inputDir.x === -1) return 'left';
+    if (inputDir.y === 1) return 'down';
+    if (inputDir.y === -1) return 'up';
+    return 'right'; // default
+}
+
 function gameEngine() {
     // cek tabrakan
     if (isCollide(snakeArr)) {
@@ -129,7 +138,29 @@ function gameEngine() {
         let snakeElement = document.createElement('div');
         snakeElement.style.gridRowStart = e.y;
         snakeElement.style.gridColumnStart = e.x;
-        snakeElement.classList.add(index === 0 ? 'head' : 'snake');
+        
+        if (index === 0) {
+            // Kepala ular dengan mata
+            snakeElement.classList.add('head');
+            snakeElement.classList.add(`head-${getHeadDirection()}`);
+            
+            // Tambahkan mata
+            let eyeLeft = document.createElement('div');
+            eyeLeft.classList.add('eye', 'eye-left');
+            snakeElement.appendChild(eyeLeft);
+            
+            let eyeRight = document.createElement('div');
+            eyeRight.classList.add('eye', 'eye-right');
+            snakeElement.appendChild(eyeRight);
+            
+        } else if (index === snakeArr.length - 1) {
+            // Ekor ular - berbeda dari tubuh
+            snakeElement.classList.add('tail');
+        } else {
+            // Tubuh ular
+            snakeElement.classList.add('snake');
+        }
+        
         board.appendChild(snakeElement);
     });
 
@@ -182,6 +213,13 @@ submitName.addEventListener('click', () => {
     window.requestAnimationFrame(main);
 });
 
+// Handle Enter key in name input
+nameInput.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') {
+        submitName.click();
+    }
+});
+
 // Handle settings button
 settingsBtn.addEventListener('click', () => {
     settingsModal.style.display = 'flex';
@@ -217,27 +255,35 @@ clearLeaderboardBtn.addEventListener('click', () => {
     displayLeaderboard();
 });
 
-// DETEKSI INPUT TOMBOL ARAH
+// DETEKSI INPUT TOMBOL ARAH - Diperbaiki agar tidak bisa membalik arah langsung
 window.addEventListener('keydown', e => {
     if (!gameStarted) return;
-    inputDir = { x: 0, y: 1 };
+    
     moveSound.play();
     switch (e.key) {
         case "ArrowUp":
-            inputDir.x = 0;
-            inputDir.y = -1;
+            if (inputDir.y !== 1) { // Tidak bisa langsung balik ke bawah
+                inputDir.x = 0;
+                inputDir.y = -1;
+            }
             break;
         case "ArrowDown":
-            inputDir.x = 0;
-            inputDir.y = 1;
+            if (inputDir.y !== -1) { // Tidak bisa langsung balik ke atas
+                inputDir.x = 0;
+                inputDir.y = 1;
+            }
             break;
         case "ArrowLeft":
-            inputDir.x = -1;
-            inputDir.y = 0;
+            if (inputDir.x !== 1) { // Tidak bisa langsung balik ke kanan
+                inputDir.x = -1;
+                inputDir.y = 0;
+            }
             break;
         case "ArrowRight":
-            inputDir.x = 1;
-            inputDir.y = 0;
+            if (inputDir.x !== -1) { // Tidak bisa langsung balik ke kiri
+                inputDir.x = 1;
+                inputDir.y = 0;
+            }
             break;
     }
 });
