@@ -35,7 +35,7 @@
 .head {
     background-color: rgb(214, 30, 30);
     border: 2px solid black;
-    transform: scale(1.2);
+    transform: relative;
     border-radius: 9px;
 }
 
@@ -214,12 +214,15 @@ body {
 }
 
 /* Styling untuk kepala ular dengan mata */
+/* Kepala ular */
 .head {
-    background: linear-gradient(145deg, #4CAF50, #2E7D32);
-    border-radius: 45%;
-    border: 2px solid #1B5E20;
+    background: #00ccff;
+    border-radius: 50%;
+    border: 1px solid #0099cc;
+    box-shadow: 0 0 6px rgba(0, 204, 255, 0.7), 
+                0 0 12px rgba(0, 204, 255, 0.6);
+    filter: drop-shadow(0 0 4px rgba(0, 204, 255, 0.6));
     position: relative;
-    box-shadow: inset 2px 2px 4px rgba(255,255,255,0.3);
 }
 
 /* Mata untuk kepala ular */
@@ -246,22 +249,22 @@ body {
 /* Posisi mata berdasarkan arah kepala */
 .head-up .eye-left {
     top: 3px;
-    left: 5px;
+    left: 3px;
 }
 
 .head-up .eye-right {
     top: 3px;
-    right: 5px;
+    right: 3px;
 }
 
 .head-down .eye-left {
     bottom: 3px;
-    left: 5px;
+    left: 3px;
 }
 
 .head-down .eye-right {
     bottom: 3px;
-    right: 5px;
+    right: 3px;
 }
 
 .head-left .eye-left {
@@ -284,20 +287,26 @@ body {
     right: 3px;
 }
 
-/* Styling untuk tubuh ular (tidak berubah) */
+/* Tubuh ular */
 .snake {
-    background: linear-gradient(145deg, #8BC34A, #689F38);
-    border-radius: 20%;
-    border: 1px solid #558B2F;
+    background: #00ccff;
+    border-radius: 50%;
+    border: 1px solid #0099cc;
+    box-shadow: 0 0 5px rgba(0, 204, 255, 0.7), 
+                0 0 10px rgba(0, 204, 255, 0.5);
+    filter: drop-shadow(0 0 3px rgba(0, 204, 255, 0.6));
 }
 
-/* Styling untuk ekor ular - bentuk runcing */
+/* Ekor ular - tetap runcing */
 .tail {
-    background: linear-gradient(145deg, #8BC34A, #689F38);
-    border: 1px solid #558B2F;
+    background: #00ccff;
+    border: 1px solid #0099cc;
     border-radius: 50% 20% 50% 20%;
     position: relative;
     transform: rotate(45deg);
+    box-shadow: 0 0 5px rgba(0, 204, 255, 0.7), 
+                0 0 10px rgba(0, 204, 255, 0.5);
+    filter: drop-shadow(0 0 3px rgba(0, 204, 255, 0.6));
 }
 
 /* Tambahan efek untuk ekor */
@@ -306,7 +315,7 @@ body {
     position: absolute;
     width: 8px;
     height: 8px;
-    background: linear-gradient(145deg, #689F38, #558B2F);
+    background: linear-gradient(145deg, rgba(0, 204, 255, 0.6), rgba(0, 204, 255, 0.6));
     border-radius: 50%;
     top: 50%;
     left: 50%;
