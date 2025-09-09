@@ -65,9 +65,9 @@
 }
 
 #scoreBox, #hiscoreBox, #playerName {
-    padding: 18px;
+    padding: 15px;
     margin: 10px;
-    font-size: 35px;
+    font-size: 30px;
     font-weight: bold;
     color: #fff;
     text-shadow: 0 0 5px #fff;
@@ -78,9 +78,9 @@
 }
 
 #extra {
-    padding: 18px;
+    padding: 10px;
     margin: 10px;
-    font-size: 35px;
+    font-size: 30px;
     color: #fff;
     text-shadow: 0 0 5px #fff;
 }
@@ -178,7 +178,7 @@ body {
 .leaderboard h2, h1 {
     padding: 18px;
     margin: 14px;
-    font-size: 35px;
+    font-size: 30px;
     color: #fff;
     text-shadow: 0 0 5px #fff;
 }
