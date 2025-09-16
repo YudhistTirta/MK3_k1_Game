@@ -197,22 +197,6 @@ body {
     overflow-y: auto;
 }
 
-#clearLeaderboardBtn {
-    padding: 10px;
-    margin: 14px;
-    font-size: 28px;
-    background: rgb(0, 9, 87, 0.9);
-    color: #fff;
-    border: 2px solid #0065F8;
-    border-radius: 8px;
-    cursor: pointer;
-    box-shadow: 0 0 10px #0065F8;
-}
-
-#clearLeaderboardBtn:hover {
-    background: rgb(0, 9, 87, 1);
-}
-
 /* Styling untuk kepala ular dengan mata */
 /* Kepala ular */
 .head {

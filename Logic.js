@@ -245,16 +245,6 @@ closeSettings.addEventListener('click', () => {
     window.requestAnimationFrame(main);
 });
 
-// Handle clear leaderboard
-clearLeaderboardBtn.addEventListener('click', () => {
-    leaderboard = [];
-    localStorage.setItem('leaderboard', JSON.stringify(leaderboard));
-    hiscoreval = 0;
-    localStorage.setItem('hiscore', JSON.stringify(hiscoreval));
-    hiscoreBox.innerHTML = "High-Score<br>0";
-    displayLeaderboard();
-});
-
 // DETEKSI INPUT TOMBOL ARAH - Diperbaiki agar tidak bisa membalik arah langsung
 window.addEventListener('keydown', e => {
     if (!gameStarted) return;
